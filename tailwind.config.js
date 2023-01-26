@@ -21,6 +21,10 @@ module.exports = {
         blue: {
           500: "#1170C7",
         },
+        cyan: {
+          400: "#25B0D0",
+          500: "#339AD3",
+        },
       },
       borderRadius: {
         md: "5px",
