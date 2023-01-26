@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 function BinPreview({ uuid, isNew }) {
   return (
     <div className="max-w-2xl bg-white shadow-lg hover:shadow-xl rounded-md px-6 pt-4 pb-6 border-gray-100">
-      <div className="flex gap-2">
+      <div className="flex gap-2 mb-3">
         <Link
           to={`/${uuid}`}
-          className="font-bold text-lg mb-3 hover:text-blue-500 block"
+          className="font-bold text-lg hover:text-blue-500 block"
         >
           #{uuid}
         </Link>
