@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import BinURL from "../components/BinURL";
+import RequestList from "../components/RequestList";
 
 function Bin() {
   const { uuid } = useParams();
@@ -20,7 +21,7 @@ function Bin() {
         </div>
         <div className="mt-6 mx-4">
           <h2 className="font-bold mb-2">All Requests</h2>
-          {/* Get the requests */}
+          <RequestList uuid={uuid} />
         </div>
       </div>
       <div>{uuid}</div>
