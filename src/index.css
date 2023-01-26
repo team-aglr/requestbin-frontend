@@ -1,3 +1,8 @@
+@import url("https://use.typekit.net/xzz4vhy.css");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+  background-color: #e6e9f0;
+}
