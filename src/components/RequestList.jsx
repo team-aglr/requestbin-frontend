@@ -23,16 +23,26 @@ function RequestList({
 
   return (
     <div className="space-y-1">
-      {requests.map((request) => {
-        return (
-          <RequestItem
-            key={request.id}
-            request={request}
-            uuid={uuid}
-            assignActiveRequest={assignActiveRequest}
-          />
-        );
-      })}
+      {requests.length === 0 ? (
+        <div className="bg-gray-200 rounded mx-4 px-6 text-center py-4">
+          <p className="font-bold">No requests so far</p>
+          <p className="mt-1">
+            When your webhook sends requests to the URL above, they will appear
+            here. Make sure to refresh the page.
+          </p>
+        </div>
+      ) : (
+        requests.map((request) => {
+          return (
+            <RequestItem
+              key={request.id}
+              request={request}
+              uuid={uuid}
+              assignActiveRequest={assignActiveRequest}
+            />
+          );
+        })
+      )}
     </div>
   );
 }
