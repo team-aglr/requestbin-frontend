@@ -1,36 +1,39 @@
 import React from "react";
 //import RequestListItem from "./RequestListItem";
 import { useEffect, useState } from "react";
-import { getRequests } from "../services/requests";
+import RequestItem from "./RequestItem";
 
-function RequestList({ uuid }) {
-  const [requests, setRequests] = useState([]);
-
+function RequestList({
+  uuid,
+  assignActiveRequest,
+  activeRequest,
+  requests,
+  setRequests,
+}) {
   useEffect(() => {
-    async function allRequests(bin_uuid) {
-      const data = await getRequests(bin_uuid);
-      setRequests(data);
-    }
-    allRequests(uuid);
-  }, [uuid]);
+    const updatedRequests = requests.map((request) => {
+      if (request.id === activeRequest) {
+        return { ...request, active: true };
+      } else {
+        return { ...request, active: false };
+      }
+    });
+    setRequests(updatedRequests);
+  }, [activeRequest]);
 
+  console.log(requests);
   return (
-    <>
-    {requests.map((request) => {
-        // RequestListItem doesn't exist yet, but can replace {request.http_method} below w/ the following chunk:
-        //  <RequestListItem 
-        //    method={request.http_method} 
-        //    created_at={request.create_at} 
-        //    uuid={request.uuid} 
-        //    id={request.id}
-        //  />
-      return (
-      <div key={request.id} className="border-x-2 border-y-2 px-3 py-3 border-slate-50">
-        {request.http_method} {request.created_at} 
-      </div>
-      );
-    })}
-  </>
+    <div className="space-y-1">
+      {requests.map((request) => {
+        return (
+          <RequestItem
+            request={request}
+            uuid={uuid}
+            assignActiveRequest={assignActiveRequest}
+          />
+        );
+      })}
+    </div>
   );
 }
 
