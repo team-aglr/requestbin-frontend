@@ -5,12 +5,14 @@ import RequestList from "../components/RequestList";
 import RequestDetails from "../components/RequestDetails";
 import { useEffect, useState } from "react";
 import { getRequests } from "../services/requests";
+import { addCookie } from "../services/cookies";
 
 // Store all of the requests up here for this particular bin
 function Bin() {
   const [activeRequest, setActiveRequest] = useState(null);
   const [requests, setRequests] = useState([]);
   const { uuid } = useParams();
+  addCookie(document, uuid);
 
   useEffect(() => {
     async function retrieveRequests() {
@@ -29,7 +31,7 @@ function Bin() {
   function assignActiveRequest(requestId) {
     setActiveRequest(requestId);
   }
-  console.log(requests);
+
   return (
     <div className="flex">
       <div className=" h-screen bg-white shadow-sm border-r-gray-200 w-96">
