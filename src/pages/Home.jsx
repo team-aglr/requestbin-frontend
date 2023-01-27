@@ -35,18 +35,29 @@ function Home() {
         </button>
       </div>
       <div className="mt-6 space-y-4">
-        {bins.map((bin) => {
-          return (
-            <BinPreview 
-              uuid={bin.uuid} 
-              key={bin.id}
-              id={bin.id} 
-              isNew={bin.isNew} 
-              binData={bins}
-              setLocalBins={setBins}
-            />
-          );
-        })}
+        {bins.length === 0 ? (
+          <div className="bg-gray-400 text-center py-8 px-8 rounded-md">
+            <h2 className="font-bold text-lg">No bins created ... so far</h2>
+            <p className="mt-2">
+              Each bin gives you a unique URL that you can provide to a webhook.
+              Once the webhook sends a POST request, your bin will receive it
+              and display the data on the screen.
+            </p>
+          </div>
+        ) : (
+          bins.map((bin) => {
+            return (
+              <BinPreview
+                uuid={bin.uuid}
+                key={bin.id}
+                id={bin.id}
+                isNew={bin.isNew}
+                binData={bins}
+                setLocalBins={setBins}
+              />
+            );
+          })
+        )}
       </div>
     </div>
   );

@@ -22,7 +22,7 @@ function Bin() {
         req.headers = headers;
       }
 
-      console.log(data)
+      console.log(data);
       data.forEach((req) => (req.active = false));
       if (data.length > 0) {
         data[0].active = true;
@@ -40,7 +40,7 @@ function Bin() {
 
   return (
     <div className="flex">
-      <div className=" h-screen bg-white shadow-sm border-r-gray-200 w-96">
+      <div className=" h-screen bg-white shadow-sm border-r-gray-200 w-[430px]">
         <Link
           to="/"
           className="text-blue-500 hover:text-blue-600 text-md mt-5 mb-4 block ml-4"
@@ -63,9 +63,7 @@ function Bin() {
           />
         </div>
       </div>
-      <RequestDetails
-        activeRequest={activeRequest}
-      />
+      <RequestDetails activeRequest={activeRequest} />
     </div>
   );
 }
