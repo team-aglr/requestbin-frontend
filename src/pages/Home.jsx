@@ -2,6 +2,7 @@ import React from "react";
 import BinPreview from "../components/BinPreview";
 import { useEffect, useState } from "react";
 import { getBins, createBin } from "../services/bins";
+import { addCookie, findCookieBins } from "../services/cookies";
 
 // Bug somewhere. Why are not all the bins being rendered.
 // Anything that gets created on that load should be new.
@@ -10,14 +11,17 @@ function Home() {
   useEffect(() => {
     async function allBins() {
       const data = await getBins();
-      setBins(data);
+      const cookieBins = findCookieBins(document, data);
+      setBins(cookieBins);
     }
     allBins();
+
   }, []);
 
   async function create() {
     const data = await createBin();
     data.isNew = true;
+    addCookie(document, data.uuid);
     setBins([data, ...bins]);
   }
 
