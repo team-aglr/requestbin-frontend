@@ -40,7 +40,7 @@ function Bin() {
 
   return (
     <div className="flex">
-      <div className=" h-screen bg-white shadow-sm border-r-gray-200 w-[430px]">
+      <div className=" h-screen bg-white shadow-sm border-r-gray-200 w-[430px] overflow-y-scroll">
         <Link
           to="/"
           className="text-blue-500 hover:text-blue-600 text-md mt-5 mb-4 block ml-4"

@@ -25,7 +25,7 @@ function RequestDetails({ activeRequest }) {
       </div>
       <div className="mt-6">
         <h2 className="font-bold text-lg mb-2">Headers</h2>
-        <div className="overflow-x-auto ">
+        <div className="max-h-[300px] overflow-x-scroll">
           <table className="w-full">
             {Object.keys(activeRequest.headers).map((key) => (
               <tr className="border-b border-b-gray-300">
@@ -40,7 +40,7 @@ function RequestDetails({ activeRequest }) {
       </div>
       <div className="mt-6">
         <h2 className="font-bold text-lg mb-4">Body</h2>
-        <div className="whitespace-pre bg-gray-200 p-4 rounded overflow-x-scroll">
+        <div className="bg-gray-200 p-4 rounded overflow-y-scroll">
           {activeRequest.body}
         </div>
       </div>
