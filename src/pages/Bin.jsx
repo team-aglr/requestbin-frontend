@@ -4,7 +4,7 @@ import BinURL from "../components/BinURL";
 import RequestList from "../components/RequestList";
 import RequestDetails from "../components/RequestDetails";
 import { useEffect, useState } from "react";
-import { getRequests } from "../services/requests";
+import { getRequests, requestById } from "../services/requests";
 import { addCookie } from "../services/cookies";
 
 function Bin() {
@@ -16,6 +16,13 @@ function Bin() {
   useEffect(() => {
     async function retrieveRequests() {
       let data = await getRequests(uuid);
+      for (const req of data) {
+        const { body, headers } = await requestById(uuid, req.id);
+        req.body = body;
+        req.headers = headers;
+      }
+
+      console.log(data)
       data.forEach((req) => (req.active = false));
       if (data.length > 0) {
         data[0].active = true;
@@ -56,8 +63,8 @@ function Bin() {
           />
         </div>
       </div>
-      <RequestDetails 
-        activeRequest={activeRequest} 
+      <RequestDetails
+        activeRequest={activeRequest}
       />
     </div>
   );
