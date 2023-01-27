@@ -38,7 +38,16 @@ function Home() {
       </div>
       <div className="mt-6 space-y-4">
         {bins.map((bin) => {
-          return <BinPreview uuid={bin.uuid} key={bin.id} isNew={bin.isNew} />;
+          return (
+            <BinPreview 
+              uuid={bin.uuid} 
+              key={bin.id}
+              id={bin.id} 
+              isNew={bin.isNew} 
+              binData={bins}
+              setLocalBins={setBins}
+            />
+          );
         })}
       </div>
     </div>
