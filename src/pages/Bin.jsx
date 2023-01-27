@@ -2,9 +2,12 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import BinURL from "../components/BinURL";
 import RequestList from "../components/RequestList";
+import { addCookie } from "../services/cookies";
 
 function Bin() {
   const { uuid } = useParams();
+  addCookie(document, uuid);
+
   return (
     <>
       <div className="fixed  h-screen bg-white left-0 shadow-sm border-r-gray-200 w-96">
