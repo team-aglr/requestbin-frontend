@@ -1,12 +1,13 @@
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import BinURL from "../components/BinURL";
+import RequestDetails from "../components/RequestDetails";
 
 function Bin() {
   const { uuid } = useParams();
   return (
-    <>
-      <div className="fixed  h-screen bg-white left-0 shadow-sm border-r-gray-200 w-96">
+    <div className="flex">
+      <div className=" h-screen bg-white shadow-sm border-r-gray-200 w-96">
         <Link
           to="/"
           className="text-blue-500 hover:text-blue-600 text-md mt-5 mb-4 block ml-4"
@@ -23,8 +24,8 @@ function Bin() {
           {/* Get the requests */}
         </div>
       </div>
-      <div>{uuid}</div>
-    </>
+      <RequestDetails />
+    </div>
   );
 }
 
