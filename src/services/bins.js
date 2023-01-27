@@ -10,4 +10,13 @@ async function createBin() {
   return response.data;
 }
 
-export { getBins, createBin };
+async function deleteBin(id) {
+  const response = await axios.delete(`/api/bins/${id}`);
+  return response.data;
+}
+
+export { 
+  getBins, 
+  createBin, 
+  deleteBin 
+};

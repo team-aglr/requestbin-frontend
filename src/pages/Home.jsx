@@ -4,10 +4,9 @@ import { useEffect, useState } from "react";
 import { getBins, createBin } from "../services/bins";
 import { addCookie, findCookieBins } from "../services/cookies";
 
-// Bug somewhere. Why are not all the bins being rendered.
-// Anything that gets created on that load should be new.
 function Home() {
   const [bins, setBins] = useState([]);
+
   useEffect(() => {
     async function allBins() {
       const data = await getBins();
@@ -15,7 +14,6 @@ function Home() {
       setBins(cookieBins);
     }
     allBins();
-
   }, []);
 
   async function create() {
@@ -38,7 +36,16 @@ function Home() {
       </div>
       <div className="mt-6 space-y-4">
         {bins.map((bin) => {
-          return <BinPreview uuid={bin.uuid} key={bin.id} isNew={bin.isNew} />;
+          return (
+            <BinPreview 
+              uuid={bin.uuid} 
+              key={bin.id}
+              id={bin.id} 
+              isNew={bin.isNew} 
+              binData={bins}
+              setLocalBins={setBins}
+            />
+          );
         })}
       </div>
     </div>
