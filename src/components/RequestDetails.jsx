@@ -15,6 +15,7 @@ function RequestDetails({activeRequest}) {
   })();
 
   function renderHeaders(headers) {
+    if (!headers){return}
     if (Object.keys(headers).length > 0) {
       return (
         <>
@@ -65,13 +66,13 @@ function RequestDetails({activeRequest}) {
       <div className="mt-6">
         <h2 className="font-bold text-lg">Headers</h2>
         <div className="flex mt-3">
-          {renderHeaders(activeRequest)}
+          {renderHeaders(activeRequest.headers)}
         </div>
       </div>
       <div className="mt-6">
         <h2 className="font-bold text-lg mb-4">Body</h2>
         <div className="bg-gray-100 w-full h-[380px] rounded-md p-4 overflow-y-scroll">
-          {JSON.stringify(activeRequest.body)}
+         {activeRequest.body}
         </div>
       </div>
     </div>
@@ -79,4 +80,3 @@ function RequestDetails({activeRequest}) {
 }
 
 export default RequestDetails;
-
