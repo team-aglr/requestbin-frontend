@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 const testHeaders = {
   host: "https://collect.requestbin.com/akadsfdfe1",
@@ -77,15 +77,7 @@ const testBody = {
   },
 };
 
-// Store the request data in a variable
-
-// const [currRequest, setcurrRequest] = useState(0);
-
 function RequestDetails() {
-  // useEffect(() => {
-  //   getRequestData();
-  // });
-
   return (
     <div className="mx-auto bg-white shadow-lg rounded-md border-gray-200 max-h-[720px] w-[672px] mt-24 p-6">
       <div className="flex justify-between">
