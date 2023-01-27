@@ -15,4 +15,8 @@ async function deleteBin(id) {
   return response.data;
 }
 
-export { getBins, createBin, deleteBin };
+export { 
+  getBins, 
+  createBin, 
+  deleteBin 
+};

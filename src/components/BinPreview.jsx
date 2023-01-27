@@ -27,7 +27,10 @@ function BinPreview({ uuid, isNew, id, binData, setLocalBins }) {
           </div>
         ) : null}
         <button >
-          < BsFillTrashFill size="2em" onClick={() => remove(id, binData, setLocalBins)}/>
+          < BsFillTrashFill 
+              size="2em" 
+              onClick={() => remove(id, binData, setLocalBins)}
+          />
         </button>
       </div>
       <BinURL uuid={uuid} />
