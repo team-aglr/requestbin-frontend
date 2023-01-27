@@ -1,5 +1,5 @@
-function RequestDetails({activeRequest}) {
-  if (!activeRequest){
+function RequestDetails({ activeRequest }) {
+  if (!activeRequest) {
     return (<></>);
   }
 
@@ -9,17 +9,17 @@ function RequestDetails({activeRequest}) {
 
   const newRandomId = (function () {
     let num = 0;
-    return (function() {
-      return num +=0.13;
+    return (function () {
+      return num += 0.13;
     });
   })();
 
   function renderHeaders(headers) {
-    if (!headers){return}
+    if (!headers) { return }
     if (Object.keys(headers).length > 0) {
       return (
         <>
-        <div>
+          <div>
             {Object.keys(headers).map(key => {
               // active property is for toggling which request is active, so don't expose that
               if (key !== "active") {
@@ -30,7 +30,7 @@ function RequestDetails({activeRequest}) {
                   </div>
                 );
               }
-            })} 
+            })}
           </div>
           <div>
             {Object.keys(headers).map(key => {
@@ -38,16 +38,16 @@ function RequestDetails({activeRequest}) {
                 return (
                   <div key={newRandomId()}>
                     <p className="mb-2 mt-2 font-mono text-gray-600 ml-[108px]">
-                      { 
-                        key === "created_at" ? 
-                          cleanerDate(headers[key]) : 
+                      {
+                        key === "created_at" ?
+                          cleanerDate(headers[key]) :
                           headers[key]
                       }
                     </p>
                     <hr />
                   </div>
                 );
-                };
+              };
             })}
           </div>
         </>
@@ -72,7 +72,7 @@ function RequestDetails({activeRequest}) {
       <div className="mt-6">
         <h2 className="font-bold text-lg mb-4">Body</h2>
         <div className="bg-gray-100 w-full h-[380px] rounded-md p-4 overflow-y-scroll">
-         {activeRequest.body}
+          {activeRequest.body}
         </div>
       </div>
     </div>
