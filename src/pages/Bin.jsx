@@ -7,7 +7,6 @@ import { useEffect, useState } from "react";
 import { getRequests } from "../services/requests";
 import { addCookie } from "../services/cookies";
 
-// Store all of the requests up here for this particular bin
 function Bin() {
   const [activeRequest, setActiveRequest] = useState(null);
   const [requests, setRequests] = useState([]);
@@ -21,7 +20,7 @@ function Bin() {
       if (data.length > 0) {
         data[0].active = true;
       }
-      data.length > 0 ? setActiveRequest(data[0].id) : setActiveRequest(null);
+      data.length > 0 ? setActiveRequest(data[0]) : setActiveRequest(null);
       setRequests(data);
     }
     retrieveRequests();
@@ -57,7 +56,9 @@ function Bin() {
           />
         </div>
       </div>
-      <RequestDetails />
+      <RequestDetails 
+        activeRequest={activeRequest} 
+      />
     </div>
   );
 }

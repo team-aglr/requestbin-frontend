@@ -5,8 +5,7 @@ function RequestItem({ request, uuid, assignActiveRequest }) {
   const [data, setData] = useState({});
 
   function changeActiveRequest() {
-    console.log(request.id);
-    assignActiveRequest(request.id);
+    assignActiveRequest(request);
   }
 
   useEffect(() => {
